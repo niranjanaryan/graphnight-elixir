@@ -2,6 +2,12 @@
 
 High-performance semantic layer for Elixir applications, powered by Rust via Rustler NIFs.
 
+> **Part of the [GraphNight](https://github.com/niranjanaryan/graphnight) project** — A high-performance semantic layer with GraphQL/REST API, written in Rust.
+
+[![Hex.pm](https://img.shields.io/hexpm/v/graphnight)](https://hex.pm/packages/graphnight)
+[![License](https://img.shields.io/hexpm/l/graphnight)](https://github.com/niranjanaryan/graphnight-elixir/blob/main/LICENSE)
+[![Build](https://github.com/niranjanaryan/graphnight-elixir/actions/workflows/ci.yml/badge.svg)](https://github.com/niranjanaryan/graphnight-elixir/actions)
+
 ## Features
 
 - **Native Performance**: Core engine runs in Rust, called via NIFs (zero-copy where possible)
@@ -564,30 +570,24 @@ end
 
 *Benchmarks run on: PostgreSQL 16, Intel i7-13700K, 32GB RAM, Elixir 1.16 / OTP 26*
 
-```
-┌─────────────────┐     NIF      ┌──────────────────┐
-│   Elixir App    │ ──────────▶ │  Rust Engine     │
-│                 │             │                  │
-│  GraphNight.*   │             │  graphnight-core │
-│  modules        │             │  graphnight-sql  │
-│                 │             │  graphnight-     │
-└─────────────────┘             │  storage         │
-                                 └──────────────────┘
-```
+## GraphNight Project
 
-The Rust engine handles:
-- SQL generation (PostgreSQL, MySQL, SQLite, DuckDB)
-- Formula parsing (revenue:sum, ratio(), time_shift(), etc.)
-- Join walking and query optimization
-- Connection pooling
-- Query caching
-- Tantivy full-text search
+This Elixir binding is part of the **GraphNight** semantic layer project:
 
-## Requirements
+- **Main Repo**: [github.com/niranjanaryan/graphnight](https://github.com/niranjanaryan/graphnight)
+- **Python Package**: [PyPI: graphnight](https://pypi.org/project/graphnight/)
+- **Elixir Package**: [Hex.pm: graphnight](https://hex.pm/packages/graphnight)
+- **Documentation**: [GraphNight Docs](https://github.com/niranjanaryan/graphnight/tree/main/docs)
 
-- Elixir 1.14+
-- Rust 1.70+ (for compilation)
-- Rustler 0.29+
+### Related Components
+
+| Component | Repository | Package |
+|-----------|------------|---------|
+| Rust Core | [graphnight](https://github.com/niranjanaryan/graphnight) | N/A |
+| Python Bindings | [graphnight](https://github.com/niranjanaryan/graphnight/tree/main/crates/graphnight-python) | `pip install graphnight` |
+| Elixir Bindings | [graphnight-elixir](https://github.com/niranjanaryan/graphnight-elixir) | `mix deps.get graphnight` |
+| GraphQL Server | [graphnight](https://github.com/niranjanaryan/graphnight/tree/main/crates/graphnight-server) | Binary |
+| CLI Tool | [graphnight](https://github.com/niranjanaryan/graphnight/tree/main/crates/graphnight-cli) | Binary |
 
 ## License
 
