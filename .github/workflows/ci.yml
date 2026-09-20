@@ -34,8 +34,8 @@ jobs:
             ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
-            graphnight-elixir/target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('graphnight-elixir/Cargo.lock') }}
+            native/graphnight_elixir/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('native/graphnight_elixir/Cargo.lock') }}
       - name: Get deps
         run: mix deps.get
       - name: Compile
@@ -66,3 +66,76 @@ jobs:
           otp-version: '27'
       - run: mix deps.get
       - run: mix credo --strict
+
+  docs:
+    name: Generate docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          elixir-version: '1.16'
+          otp-version: '27'
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - run: mix deps.get
+      - run: mix docs
+      - name: Upload docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: doc/
+          retention-days: 7
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  publish:
+    name: Publish to Hex.pm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          elixir-version: '1.16'
+          otp-version: '27'
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            native/graphnight_elixir/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('native/graphnight_elixir/Cargo.lock') }}
+      - name: Get deps
+        run: mix deps.get
+      - name: Compile
+        run: MIX_ENV=prod mix compile
+      - name: Run tests
+        run: MIX_ENV=test mix test
+      - name: Generate docs
+        run: MIX_ENV=prod mix docs
+      - name: Build package
+        run: mix hex.build
+      - name: Publish to Hex.pm
+        run: mix hex.publish --yes
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
