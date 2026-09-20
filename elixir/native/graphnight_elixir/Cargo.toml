@@ -1,0 +1,39 @@
+[package]
+name = "graphnight_elixir"
+version = "1.0.0"
+edition = "2021"
+license = "Apache-2.0"
+authors = ["GraphNight Team <nirunitk@gmail.com>"]
+description = "Elixir bindings for GraphNight semantic layer via Rustler"
+repository = "https://github.com/niranjanaryan/graphnight-elixir"
+documentation = "https://docs.rs/graphnight_elixir"
+homepage = "https://github.com/niranjanaryan/graphnight"
+categories = ["external-ffi-bindings", "database", "api"]
+keywords = ["elixir", "rustler", "nif", "semantic-layer", "graphql"]
+
+[lib]
+name = "graphnight_elixir"
+crate-type = ["cdylib"]
+
+[dependencies]
+graphnight-core = { git = "https://github.com/niranjanaryan/graphnight.git", branch = "main" }
+graphnight-sql = { git = "https://github.com/niranjanaryan/graphnight.git", branch = "main" }
+graphnight-storage = { git = "https://github.com/niranjanaryan/graphnight.git", branch = "main" }
+rustler = { version = "0.29", features = ["default"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["rt-multi-thread", "macros"] }
+anyhow = "1.0"
+uuid = { version = "1.0", features = ["serde", "v4", "v7"] }
+chrono = { version = "0.4", features = ["serde"] }
+once_cell = "1.19"
+
+[dev-dependencies]
+rustler = { version = "0.29", features = ["default"] }
+
+[features]
+default = []
+
+[profile.release]
+lto = true
+codegen-units = 1

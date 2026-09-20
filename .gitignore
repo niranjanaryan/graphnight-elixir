@@ -1,0 +1,33 @@
+# Generated files
+_build/
+deps/
+*.ez
+doc/
+cover/
+*.beam
+
+# Rust artifacts
+graphnight-elixir/target/
+graphnight-elixir/Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+ctags
+tags
+
+# Dialyzer
+.dialyzer_plt
+.dialyzer.plt
+*.plt
+
+# Hex
+.hex/
