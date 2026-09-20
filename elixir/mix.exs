@@ -26,7 +26,8 @@ defmodule GraphNight.MixProject do
       {:rustler, "~> 0.29.1"},
       {:jason, "~> 1.4"},
       {:ecto, "~> 3.10", optional: true},
-      {:postgrex, "~> 0.17", optional: true}
+      {:postgrex, "~> 0.17", optional: true},
+      {:ex_doc, "~> 0.30", only: :dev, runtime: false}
     ]
   end
 
