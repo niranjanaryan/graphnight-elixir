@@ -121,6 +121,8 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('native/graphnight_elixir/Cargo.lock') }}
       - name: Get deps
         run: mix deps.get
+      - name: Precompile Rustler NIFs
+        run: mix rustler.precompile
       - name: Compile
         run: MIX_ENV=prod mix compile
       - name: Run tests

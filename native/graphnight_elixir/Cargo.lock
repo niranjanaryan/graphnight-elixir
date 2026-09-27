@@ -959,8 +959,8 @@ dependencies = [
 
 [[package]]
 name = "graphnight-core"
-version = "1.0.0"
-source = "git+https://github.com/niranjanaryan/graphnight.git?branch=main#0a0462b47d3462f063d41afac872ad246f069b6b"
+version = "1.2.0"
+source = "git+https://github.com/niranjanaryan/graphnight.git?tag=v1.2.0#e160b13f972c8b8133a515d62c0746a26df37cef"
 dependencies = [
  "anyhow",
  "chrono",
@@ -978,8 +978,8 @@ dependencies = [
 
 [[package]]
 name = "graphnight-sql"
-version = "1.0.0"
-source = "git+https://github.com/niranjanaryan/graphnight.git?branch=main#0a0462b47d3462f063d41afac872ad246f069b6b"
+version = "1.2.0"
+source = "git+https://github.com/niranjanaryan/graphnight.git?tag=v1.2.0#e160b13f972c8b8133a515d62c0746a26df37cef"
 dependencies = [
  "anyhow",
  "arrow",
@@ -1004,8 +1004,8 @@ dependencies = [
 
 [[package]]
 name = "graphnight-storage"
-version = "1.0.0"
-source = "git+https://github.com/niranjanaryan/graphnight.git?branch=main#0a0462b47d3462f063d41afac872ad246f069b6b"
+version = "1.2.0"
+source = "git+https://github.com/niranjanaryan/graphnight.git?tag=v1.2.0#e160b13f972c8b8133a515d62c0746a26df37cef"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1024,7 +1024,7 @@ dependencies = [
 
 [[package]]
 name = "graphnight_elixir"
-version = "1.0.0"
+version = "1.2.0"
 dependencies = [
  "anyhow",
  "chrono",
