@@ -1,6 +1,6 @@
 [package]
 name = "graphnight_elixir"
-version = "1.0.0"
+version = "1.2.0"
 edition = "2021"
 license = "Apache-2.0"
 authors = ["GraphNight Team <nirunitk@gmail.com>"]
@@ -16,9 +16,9 @@ name = "graphnight_elixir"
 crate-type = ["cdylib"]
 
 [dependencies]
-graphnight-core = { git = "https://github.com/niranjanaryan/graphnight.git", branch = "main" }
-graphnight-sql = { git = "https://github.com/niranjanaryan/graphnight.git", branch = "main" }
-graphnight-storage = { git = "https://github.com/niranjanaryan/graphnight.git", branch = "main" }
+graphnight-core = { git = "https://github.com/niranjanaryan/graphnight.git", tag = "v1.2.0" }
+graphnight-sql = { git = "https://github.com/niranjanaryan/graphnight.git", tag = "v1.2.0" }
+graphnight-storage = { git = "https://github.com/niranjanaryan/graphnight.git", tag = "v1.2.0" }
 rustler = { version = "0.29", features = ["default"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
